@@ -1,0 +1,804 @@
+@media (max-width: 680px) {
+  body {
+    background-image: url("../public/Calculate Your Food_small.jpg");
+    height: 100%;
+    width: 90%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center center center;
+
+    display: flex;
+    overflow: scroll;
+    align-items: center;
+    justify-content: center;
+    font-family: "Tahoma";
+  }
+
+  input:autofill {
+    background-color: white;
+    /* does not work at Google Chrome */
+  }
+
+  .loginTitle,
+  .registerTitle {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+    margin-bottom: 0px;
+  }
+
+  .App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 30%;
+    left: 15%;
+  }
+
+  .MainPage {
+    position: relative;
+    top: -270px;
+    left: -50px;
+  }
+
+  img[src="./my-Calculate Your Food.png"] {
+    position: absolute;
+    top: -250px;
+  }
+
+  img[src="./by maxa.png"] {
+    position: absolute;
+    top: 500px;
+  }
+
+  .registerTitle {
+    margin-bottom: 5px;
+  }
+
+  .loginContainer,
+  .registerContainer {
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.35);
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .passwordField,
+  .nameField {
+    background-color: white;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: 0px;
+    margin-top: 15px;
+  }
+
+  .passwordInput,
+  .nameInput {
+    background-color: white;
+  }
+
+  .nameField,
+  .passwordField {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+  }
+
+  .edamambadge {
+    position: relative;
+    left: 7%;
+  }
+
+  .redborder {
+    border: 1px solid red;
+  }
+
+  input {
+    background-color: rgb(255, 255, 255);
+    font-weight: bold;
+    display: inline-flex;
+    margin-right: 20px;
+    width: 90%;
+    height: 50%;
+    border: none;
+    outline: none;
+    border-color: transparent;
+  }
+
+  .passwordField img {
+    width: 20px;
+    height: 15px;
+    cursor: pointer;
+  }
+
+  .newregisterButton {
+    display: block;
+  }
+
+  .loginButton,
+  .newregisterButton {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+
+    margin-top: 10px;
+  }
+
+  .registerButton {
+    background-color: #6780b9;
+    border-radius: 3px;
+    width: 40%;
+    height: 30px;
+    border-width: 1px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .registerpasswordField,
+  .registernameField,
+  .registeremailField {
+    background-color: aliceblue;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+
+  .registerNewUser,
+  .registerCancel {
+    display: block;
+    background-color: #4b6cb7;
+    border-radius: 3px;
+    width: 40%;
+    height: 40px;
+    border-width: 1px;
+    cursor: pointer;
+    margin: 15px;
+    margin-bottom: 0px;
+  }
+
+  .warningText,
+  .alertCustomFields {
+    font-size: small;
+    margin-bottom: 15px;
+    color: red;
+  }
+
+  .optional {
+    font-size: x-small;
+    font-style: italic;
+  }
+
+  .hiddenElement {
+    visibility: hidden;
+  }
+
+  /* Style for the overlay background */
+  .overlay {
+    position: absolute;
+    display: flex;
+    top: 0%;
+    left: 0%;
+    width: 250px;
+    height: 358px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .overlayWrongUser {
+    position: absolute;
+    display: flex;
+    top: 0%;
+    left: 0%;
+    width: 290px;
+    height: 280px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .wrongUserText,
+  .noIgrFoundTxt {
+    color: red;
+  }
+
+  /* Style for the alert popup */
+  .popup {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    filter: blur(0px);
+  }
+
+  /* Style for the close button */
+  .close {
+    cursor: pointer;
+    color: #007bff;
+    font-weight: bold;
+  }
+
+  /*for phone size */
+  .threeContainers {
+    position: relative;
+    left: 0%;
+    display: block;
+  }
+
+  .userInterfaceContainer11,
+  .userInterfaceContainer12,
+  .userInterfaceContainer21,
+  .userInterfaceContainer22,
+  .userInterfaceContainer31,
+  .userInterfaceContainer32 {
+    margin-top: 10px;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .userInterfaceContainer122 {
+    max-height: 304px;
+    overflow-y: auto;
+  }
+
+  .userInterfaceContainer122::-webkit-scrollbar {
+    width: 2px;
+    /* makes scroll bar invisible */
+  }
+
+  .userInterfaceContainer322 {
+    max-height: 304px;
+    overflow-y: auto;
+  }
+
+  .userInterfaceContainer322::-webkit-scrollbar {
+    width: 2px;
+    /* makes scroll bar invisible */
+  }
+
+  .userInterfaceContainer1,
+  .userInterfaceContainer2,
+  .userInterfaceContainer3 {
+    display: block;
+    width: 350px;
+    height: 100%;
+  }
+
+  .userInterfaceContainer2,
+  .userInterfaceContainer3 {
+    position: relative;
+  }
+
+  .allcontainersTitle {
+    position: relative;
+    color: #fff;
+    display: flex;
+    position: relative;
+    align-items: center;
+    left: 0%;
+  }
+
+  .welcomeUser {
+    padding: 5px;
+    border: solid 1px black;
+    border-radius: 10px;
+    background-color: royalblue;
+    box-shadow: 0 0 20px rgba(247, 247, 247, 0.7);
+  }
+
+  .containerTitle {
+    position: relative;
+    left: -20px;
+    top: -20px;
+    background-color: rgb(158, 176, 228);
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    width: 300px;
+    height: 50px;
+    padding: 20px;
+    border-bottom: 3px solid rgb(19, 70, 224);
+  }
+
+  .searchField,
+  .createNewRecipe,
+  .selectField,
+  .searchIngrField,
+  .ingredientToAdd {
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: 0px;
+    top: -5px;
+    background-color: white;
+    width: 100%;
+    height: 45px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .selectField {
+    margin-bottom: 0px;
+  }
+  .searchField {
+    margin-bottom: 5px;
+  }
+
+  .searchInput,
+  .createNewRecipeInput {
+    width: 100%;
+    background-color: white;
+  }
+
+  .recipeBtn,
+  .addClrBtn {
+    width: 30%;
+    height: 100%;
+    background-color: royalblue;
+    border-radius: 5px;
+    transition: 0.4s;
+    color: white;
+  }
+
+  .recipeBtn:hover,
+  .addClrBtn:hover {
+    background-color: black;
+    color: rgb(240, 121, 230);
+  }
+
+  .recipeNameTitle {
+    display: flex;
+    margin-top: 0px;
+    padding-top: 0px;
+    width: 230px;
+  }
+
+  .recipeNameDisplay {
+    display: block;
+    width: 170px;
+    color: rgb(16, 52, 158);
+    font-size: 20px;
+  }
+
+  .customIngrTitle {
+    display: flex;
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+
+  .searchIngrField {
+    margin-bottom: 0px;
+  }
+
+  .displaySelection {
+    width: 275%;
+  }
+
+  .addClrBtn {
+    margin-left: 2px;
+    width: 30%;
+  }
+
+  .amountInput {
+    width: 100%;
+    height: 70%;
+    margin-right: 1%;
+    border-style: solid;
+    border-color: royalblue;
+    border-width: 1px;
+    border-radius: 5px;
+    background-color: white;
+    text-align: right;
+  }
+
+  hr.rounded {
+    border-top: 8px solid white;
+    border-radius: 5px;
+  }
+
+  .ingredientToAdd {
+    display: flex;
+    height: 100%;
+    margin-bottom: 1%;
+  }
+
+  .ingredientToAddText {
+    width: 95%;
+  }
+
+  .ingredientToRemove {
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    border-radius: 5px;
+  }
+
+  .ingredientToRemove:hover {
+    background-color: black;
+    color: rgb(236, 133, 133);
+  }
+
+  .disabled {
+    pointer-events: none;
+  }
+
+  /* Style the increment and decrement buttons date picker*/
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Remove default margin */
+  }
+
+  .removeAll,
+  .removeRecipe {
+    position: relative;
+    left: 40%;
+    background-color: red;
+    border-radius: 5px;
+    height: 30px;
+    color: white;
+  }
+  .removeAll:hover {
+    background-color: rgb(165, 53, 53);
+  }
+
+  .removeRecipe {
+    left: 32%;
+  }
+  .removeRecipe:hover {
+    background-color: rgb(165, 53, 53);
+  }
+
+  .addToDiary {
+    position: relative;
+    left: 33%;
+    background-color: royalblue;
+    border-radius: 5px;
+    width: 30%;
+    height: 30px;
+    color: white;
+  }
+
+  .addAll,
+  .customIngrBtn,
+  .browsedRecipe {
+    background-color: royalblue;
+    border-radius: 5px;
+    height: 30px;
+    color: white;
+  }
+  .addAll:hover {
+    background-color: black;
+    color: rgb(240, 121, 230);
+  }
+
+  .saveRecipe,
+  .clearName {
+    position: relative;
+    left: 5%;
+    height: 30%;
+    background-color: royalblue;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 30%;
+    height: 30px;
+    color: white;
+  }
+
+  .clearName {
+    position: relative;
+    top: 20px;
+    left: 30%;
+  }
+
+  .saveRecipe:hover,
+  .clearName:hover,
+  .overwriteRecipe:hover,
+  .customIngrBtn:hover,
+  .recipeNameBrowseShow:hover,
+  .recipeNameBrowseAdd:hover,
+  .addToDiary:hover {
+    background-color: black;
+    color: rgb(240, 121, 230);
+  }
+
+  .customIngrBtn {
+    position: relative;
+    top: 10px;
+    left: 25%;
+  }
+
+  .customfields {
+    display: flex;
+  }
+
+  hr {
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+
+  .logOut {
+    position: relative;
+    left: 1%;
+    width: 20%;
+    background-color: royalblue;
+    height: 30px;
+    border-radius: 8px;
+    color: white;
+  }
+
+  .logOut:hover {
+    background-color: rgb(196, 193, 245);
+  }
+
+  .deleteAccount {
+    position: relative;
+    left: 30%;
+    top: 15px;
+    background-color: red;
+    height: 30px;
+    border-radius: 8px;
+    color: white;
+    width: 40%;
+    margin-bottom: 15px;
+  }
+
+  .deleteAccount:hover {
+    background-color: rgb(119, 8, 8);
+  }
+
+  .recipeExistsAlert,
+  .deleteAccountAlert,
+  .deleteRecipeAlert,
+  .clearDiaryWarningAlert {
+    position: fixed;
+    top: 120px;
+    left: center;
+    display: block;
+    background-color: rgb(230, 183, 183);
+    height: 250px;
+    width: 340px;
+    border: 2px solid red;
+    border-radius: 15px;
+    text-align: center;
+    z-index: 5;
+  }
+
+  .recipeExistsAlertBtn,
+  .deleteAccountAlertBtn,
+  .deleteRecipeAlertBtn,
+  .clearDiaryWarningBtn {
+    position: relative;
+    top: 25%;
+    height: 20%;
+    width: 30%;
+    background-color: white;
+    border: 2px solid red;
+    border-radius: 10px;
+    font-size: x-large;
+  }
+
+  .deleteAccountAlertBtn,
+  .deleteRecipeAlertBtn,
+  .clearDiaryWarningBtn {
+    top: 5%;
+  }
+
+  .recipeExistsAlertBtn:hover,
+  .deleteAccountAlertBtn:hover,
+  .deleteRecipeAlertBtn:hover,
+  .clearDiaryWarningBtn:hover {
+    background-color: red;
+  }
+
+  .alertText {
+    position: relative;
+    top: 10%;
+  }
+
+  .recipeSaved {
+    background-color: #9ec1e7;
+  }
+
+  .recipeSavedOK {
+    background-color: #589feb;
+  }
+
+  .recipeSavedOK:hover {
+    background-color: #147be9;
+  }
+
+  .recipeNameBrowseShow,
+  .recipeNameBrowseAdd {
+    position: relative;
+    background-color: royalblue;
+    border-radius: 5px;
+    color: white;
+  }
+
+  .recipeNameBrowseAdd {
+    width: 55px;
+  }
+
+  .recipeNameBrowse {
+    display: flex;
+    margin-top: 0px;
+    padding-top: 0px;
+    width: 299px;
+  }
+
+  .recipeNameBrowseTitle {
+    margin-left: 2px;
+    display: block;
+    width: 90%;
+    font-size: 12px;
+  }
+
+  .addToDiaryParameters {
+    display: block;
+    position: fixed;
+    left: 4%;
+    top: 25%;
+    display: block;
+    background-color: rgb(143, 129, 226);
+    height: 250px;
+    width: 350px;
+    border: 2px solid white;
+    border-radius: 15px;
+    text-align: center;
+  }
+
+  .addToOtherRecipeBtns {
+    display: inline-block;
+    width: 300px;
+    margin-top: 30px;
+  }
+
+  .addRecipeToRecipe {
+    font-size: 20px;
+    color: rgb(37, 3, 37);
+  }
+
+  .enterWeightToAddDiv {
+    width: 90%;
+    display: inline-block;
+    margin-top: 10px;
+  }
+
+  .enterWeigthAdd {
+    width: 90%;
+    display: flex;
+  }
+
+  .sideText {
+    width: 150px;
+  }
+
+  .sideTextAdd {
+    margin: 0%;
+    justify-content: left;
+    font-size: 12px;
+  }
+
+  .addToRecipeParameters {
+    position: absolute;
+    left: 0%;
+    top: 15%;
+    display: block;
+    background-color: rgb(143, 129, 226);
+    height: 250px;
+    width: 100%;
+    border: 2px solid white;
+    border-radius: 15px;
+    text-align: center;
+    z-index: 5;
+  }
+
+  .addRecipeToRecipe {
+    font-size: 20px;
+    color: rgb(37, 3, 37);
+  }
+
+  .enterWeightToAddDiv {
+    width: 90%;
+    display: inline-block;
+    margin-top: 10px;
+  }
+
+  .enterWeigthAdd {
+    width: 90%;
+    display: flex;
+  }
+
+  .pickAdateDiv,
+  .enterWeightDiv,
+  .addToDiaryBtns {
+    width: 170px;
+    display: inline-block;
+    margin-top: 30px;
+  }
+
+  .pickAdateInput,
+  .enterWeightInput,
+  .enterWeightAddInput {
+    display: inline-block;
+    position: relative;
+    left: -15px;
+    max-width: 100px;
+    height: 30px;
+    margin-left: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 5px;
+  }
+
+  .enterWeightInput,
+  .pickAdateInput {
+    max-width: 70%;
+  }
+
+  .pickAdateInput {
+    font-size: 10px;
+  }
+
+  .addToDiaryBtns {
+    display: inline-block;
+    width: 300px;
+    margin-top: 50px;
+  }
+
+  .addToDiaryBtn1,
+  .addToDiaryBtn2 {
+    margin-right: 5px;
+    background-color: royalblue;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 30%;
+    height: 30px;
+    color: white;
+  }
+
+  .addToDiaryBtn2 {
+    background-color: rgb(225, 65, 65);
+    margin-left: 10px;
+  }
+
+  .addToDiaryBtn1:hover,
+  .addToDiaryBtn2:hover {
+    background-color: black;
+    color: rgb(240, 121, 230);
+  }
+
+  .overlayOnAlert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    pointer-events: all;
+  }
+  .signature {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: white;
+    font-size: x-small;
+  }
+}
