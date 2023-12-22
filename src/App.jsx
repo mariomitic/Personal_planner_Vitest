@@ -9,8 +9,6 @@ import MainPage from "./components/MainPage";
 
 import "./App.css";
 
-
-
 function App() {
   const [logOrregister, setlogOrregister] = useState("login"); //"login" after logout
   const [jsondata, setjsondata] = useState();
@@ -18,24 +16,22 @@ function App() {
   const [loginName, setloginName] = useState(""); //reset after deletion
   const [loginSuccess, setloginSuccess] = useState(false); //false after log out
 
-  
-
   if (loginSuccess === true) {
     document.body.style.backgroundImage =
       'url("../vegetables-set-left-black-slate.jpg")';
     return (
       <div>
         <a className="signature">BY MAXA</a>
-      <div className="App">
-        <MainPage
-          setlogOrregister={setlogOrregister}
-          setloginSuccess={setloginSuccess}
-          jsondata={jsondata}
-          loginId={loginId}
-          loginName={loginName}
-          setloginId={setloginId}
-        />
-      </div>
+        <div className="App">
+          <MainPage
+            setlogOrregister={setlogOrregister}
+            setloginSuccess={setloginSuccess}
+            jsondata={jsondata}
+            loginId={loginId}
+            loginName={loginName}
+            setloginId={setloginId}
+          />
+        </div>
       </div>
     );
   }
@@ -64,6 +60,7 @@ function App() {
           height="20px"
           alt="By Maxa"
         ></img>
+         <div id="edamam-badge" data-color="white" className="edamambadge"></div>
       </div>
     );
   }

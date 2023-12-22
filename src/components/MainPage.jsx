@@ -15,10 +15,7 @@ import DeleteRecipeWarning from "./DeleteRecipeWarning";
 import AlertOverlay from "./AlertOverlay";
 import AddRecipeAsIngredient from "./AddRecipeAsIngredient";
 
-
 function MainPage(props) {
- 
-
   {
     /* to reset loginId after deletion */
   }
@@ -104,7 +101,6 @@ function MainPage(props) {
   );
   //needed this for clear diary
 
-
   const appId = import.meta.env.VITE_API_ID;
   const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -120,7 +116,7 @@ function MainPage(props) {
     } else {
       const quantity = "100g of ";
       const ingr = quantity + searchedItem;
-      // fetch(`https://api.edamam.com/api/nutrition-data?app_id=${appId}&app_key=${apiKey}&ingr=${ingr}`, { //for other API
+
       fetch(
         `https://api.edamam.com/api/food-database/v2/parser?app_id=${appId}&app_key=${apiKey}&ingr=${ingr}`,
         {
@@ -148,8 +144,6 @@ function MainPage(props) {
   }
 
   useEffect(() => {
-
-
     displaysearchResults !== "" && enteredAmount > 0
       ? addClrBtn.current.classList.remove("disabled")
       : addClrBtn.current.classList.add("disabled");
@@ -166,7 +160,13 @@ function MainPage(props) {
         setrecipeProtein(""),
         setrecipeFat(""))
       : null;
-  }, [ingredientsAddedToList, enteredAmount, displaysearchResults, recipeName]);
+  }, [
+    ingredientsAddedToList,
+    enteredAmount,
+    displaysearchResults,
+    recipeName,
+    addToDiaryData,
+  ]);
 
   function clearIngrField() {
     setsearchedItem("");
@@ -318,19 +318,24 @@ function MainPage(props) {
     setrecipeFat(Math.ceil(totalFat));
   }
 
+  const accData = import.meta.env.VITE_JSON_PLANNER_ACC;
+
   const removeUser = (id) => {
-    fetch(`http://localhost:3000/accountlist/${id}`, {
+    const ids = parseInt(id);
+
+    fetch(`${accData}/${ids}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => {
-        res.json();
+      .then((res) => res.json())
+      .then(() => {
+        props.setlogOrregister("login");
         props.setloginId("");
+        window.location.reload();
       })
       .catch((err) => setalertMessage("From removeUser Network error: " + err));
-    props.setlogOrregister("login");
   };
 
   function saveRecipe() {
@@ -364,7 +369,7 @@ function MainPage(props) {
       },
     ];
 
-    fetch(`http://localhost:3000/recipes`, {
+    fetch(`${appRecipes}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -407,7 +412,7 @@ function MainPage(props) {
 
   function deleteRecipe(id) {
     if (id) {
-      fetch(`http://localhost:3000/recipes/${id}`, {
+      fetch(`${appRecipes}/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -415,9 +420,7 @@ function MainPage(props) {
       })
         .then((res) => res.json())
         .catch((err) =>
-          setalertMessage(
-            `From deleteRecipe Network error: Recipe not found! ${err}`
-          )
+          setalertMessage(`Error fetching recipes: Recipe not found! ${err}`)
         );
       setsavedDeletedMessage("Recipe deleted successfully!");
       getAllRecipes();
@@ -449,8 +452,12 @@ function MainPage(props) {
     }
   }
 
+  const appRecipes = import.meta.env.VITE_JSON_PLANNER_RECIPES;
+
   function getAllRecipes() {
-    fetch(`http://localhost:3000/recipes`, {
+    let fetchedRecipes;
+
+    fetch(`${appRecipes}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -458,9 +465,7 @@ function MainPage(props) {
     })
       .then((res) => res.json())
       .then((data) => setallRecipes(data))
-      .catch((err) =>
-        setalertMessage("From getAllRecipes: Recipe not found!" + err)
-      );
+      .catch((err) => setalertMessage("Error: Recipe not found!"));
   }
 
   function searchAllRecipes() {
@@ -581,8 +586,10 @@ function MainPage(props) {
     setaddRecipeAsIngredient(false);
   };
 
+  const accDaily = import.meta.env.VITE_JSON_PLANNER_DAILY;
+
   function getDaily() {
-    fetch(`http://localhost:3000/daily`, {
+    fetch(`${accDaily}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -590,9 +597,7 @@ function MainPage(props) {
     })
       .then((res) => res.json())
       .then((data) => setaddToDiaryData(data))
-      .catch((err) =>
-        setalertMessage("From showDialy: Recipe not found!" + err)
-      );
+      .catch((err) => setalertMessage("Error daily: Recipe not found!"));
   }
 
   function showDialy() {
@@ -614,7 +619,7 @@ function MainPage(props) {
       },
     ];
 
-    fetch(`http://localhost:3000/daily`, {
+    fetch(`${accDaily}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -623,12 +628,12 @@ function MainPage(props) {
     })
       .then((res) => res.json())
       .then(removeAllIngredients())
-      .catch((err) => setalertMessage("Frm addToDiary Network error: " + err));
+      .catch((err) => setalertMessage("From addToDiary Network error: " + err));
   }
 
   const clearAllDiary = () => {
     for (let i = 0; i < addToDiaryData.length; i++) {
-      fetch(`http://localhost:3000/daily/${addToDiaryData[i].id}`, {
+      fetch(`${accDaily}/${addToDiaryData[i].id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

@@ -77,10 +77,10 @@
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
   }
 
-  .edamambadge {
+  /* .edamambadge {
     position: relative;
-    left: 10%;
-  }
+    
+  } */
 
   .redborder {
     border: 1px solid red;
@@ -190,7 +190,7 @@
     display: flex;
     top: 19%;
     left: 13.8%;
-    height: 240px;
+    height: 195px;
     justify-content: center;
     align-items: center;
     width: 250px;

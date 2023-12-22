@@ -8,7 +8,7 @@ function RegisterPage(props) {
   const [userExists, setuserExists] = useState(false);
 
   const checkForExistingUser = (load) => {
-    const userName = props.jsondata.accountlist;
+    const userName = props.jsondata;
 
     for (let i = 0; i < userName.length; i++) {
       if (userName[i].username === load.username) {
@@ -18,15 +18,19 @@ function RegisterPage(props) {
     }
   };
 
+  const accData = import.meta.env.VITE_JSON_PLANNER_ACC;
+
   const registerNewUser = (load) => {
-    fetch("http://localhost:3000/accountlist", {
+    fetch(`${accData}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(load),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        res.json(), console.log(res);
+      })
       .catch((err) => alert(err));
   };
 
@@ -116,6 +120,7 @@ function RegisterPage(props) {
               name="registername"
               className="registernameField"
               onChange={formik.handleChange}
+              autoComplete="current-password"
               value={formik.values.registername}
             ></input>
           </div>
@@ -130,6 +135,7 @@ function RegisterPage(props) {
               name="registerpassword"
               className="registerpasswordField"
               onChange={formik.handleChange}
+              autoComplete="current-password"
               value={formik.values.registerpassword}
             ></input>
           </div>
@@ -144,6 +150,7 @@ function RegisterPage(props) {
               name="registerconfirmpassword"
               className="registerpasswordField"
               onChange={formik.handleChange}
+              autoComplete="current-password"
               value={formik.values.registerconfirmpassword}
             ></input>
           </div>
@@ -163,6 +170,7 @@ function RegisterPage(props) {
               name="registeremail"
               className="registeremailField"
               onChange={formik.handleChange}
+              autoComplete="current-password"
               value={formik.values.registeremail}
             ></input>
           </div>
@@ -179,23 +187,19 @@ function RegisterPage(props) {
               className="registerCancel"
               onClick={() => {
                 props.setlogOrregister("login");
+               // window.location.reload();
               }}
             >
               CANCEL
             </button>
-      
           </div>
         </form>
       </div>
 
       {success ? (
-        <AlertSuccess
-          setlogOrregister={() => {
-            props.setlogOrregister;
-          }}
-        />
+        <AlertSuccess setlogOrregister={props.setlogOrregister} />
       ) : null}
-   
+
       {userExists ? (
         <AlertUserExists
           setlogOrregister={props.setlogOrregister}

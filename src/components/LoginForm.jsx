@@ -11,13 +11,15 @@ function LoginForm(props) {
   const passwordInput = useRef();
   const showPasswordicon = useRef();
 
+  const accData = import.meta.env.VITE_JSON_PLANNER_ACC;
+
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("./accountList.json");
+        const response = await fetch(`${accData}`);
         const jsonData = await response.json();
         props.setjsondata(jsonData);
-      } catch (error) {
+       } catch (error) {
         alert("Error fetching data from LoginForm:", error);
       }
     }
@@ -26,19 +28,19 @@ function LoginForm(props) {
   }, []);
 
   const findUserNameandCheckPassword = (typedname, typedpassword) => {
-    const userIndex = props.jsondata.accountlist.findIndex(
+    const userIndex = props.jsondata.findIndex(
       (user) => user.username === typedname
     );
 
     if (userIndex !== -1) {
-      props.setloginId(props.jsondata.accountlist[userIndex].id);
-      props.setloginName(props.jsondata.accountlist[userIndex].username);
+      props.setloginId(props.jsondata[userIndex].id);
+      props.setloginName(props.jsondata[userIndex].username);
     } else {
       setloginpasswordInvalid(true); //'Wrong user name or password!'
       return;
     }
 
-    if (props.jsondata.accountlist[userIndex].password === typedpassword) {
+    if (props.jsondata[userIndex].password === typedpassword) {
       props.setloginSuccess(true); //Success!'
       props.setlogOrregister("");
       return;
@@ -85,8 +87,8 @@ function LoginForm(props) {
   return (
     <div>
       <div className="loginContainer">
-        <div id="edamam-badge" data-color="white" className="edamambadge"></div>
-        <hr></hr>
+        {/* <div id="edamam-badge" data-color="white" className="edamambadge"></div>
+        <hr></hr> */}
         <form onSubmit={formik.handleSubmit}>
           <h2 className="loginTitle">Login</h2>
 

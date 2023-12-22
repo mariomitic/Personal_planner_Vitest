@@ -7,8 +7,8 @@ function DeleteAccWarning(props) {
       <button
         className="deleteAccountAlertBtn"
         onClick={() => {
-          props.removeUser(props.loginId), window.location.reload();
-        }}
+          props.removeUser(props.loginId);
+              }}
       >
         Yes
       </button>
