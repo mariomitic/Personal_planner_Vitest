@@ -33,8 +33,8 @@
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 35%;
-    left: 25%;
+    top: 270px;
+    left: 15%;
   }
 
   .MainPage {
@@ -59,12 +59,10 @@
 
   .loginContainer,
   .registerContainer {
-    
     width: 250px;
     background-color: rgba(255, 255, 255, 0.35);
     padding: 20px;
     border-radius: 15px;
-    
   }
 
   .passwordField,
@@ -290,12 +288,13 @@
     position: relative;
     color: #fff;
     display: flex;
-    position: relative;
     align-items: center;
     left: 0%;
   }
 
   .welcomeUser {
+    width: 270px;
+    height: 100%;
     padding: 5px;
     border: solid 1px black;
     border-radius: 10px;
@@ -356,12 +355,6 @@
     border-radius: 5px;
     transition: 0.4s;
     color: white;
-  }
-
-  .recipeBtn:hover,
-  .addClrBtn:hover {
-    background-color: black;
-    color: rgb(240, 121, 230);
   }
 
   .recipeNameTitle {
@@ -431,11 +424,6 @@
     border-radius: 5px;
   }
 
-  .ingredientToRemove:hover {
-    background-color: black;
-    color: rgb(236, 133, 133);
-  }
-
   .disabled {
     pointer-events: none;
   }
@@ -456,15 +444,9 @@
     height: 30px;
     color: white;
   }
-  .removeAll:hover {
-    background-color: rgb(165, 53, 53);
-  }
 
   .removeRecipe {
     left: 32%;
-  }
-  .removeRecipe:hover {
-    background-color: rgb(165, 53, 53);
   }
 
   .addToDiary {
@@ -484,10 +466,6 @@
     border-radius: 5px;
     height: 30px;
     color: white;
-  }
-  .addAll:hover {
-    background-color: black;
-    color: rgb(240, 121, 230);
   }
 
   .saveRecipe,
@@ -509,17 +487,6 @@
     left: 30%;
   }
 
-  .saveRecipe:hover,
-  .clearName:hover,
-  .overwriteRecipe:hover,
-  .customIngrBtn:hover,
-  .recipeNameBrowseShow:hover,
-  .recipeNameBrowseAdd:hover,
-  .addToDiary:hover {
-    background-color: black;
-    color: rgb(240, 121, 230);
-  }
-
   .customIngrBtn {
     position: relative;
     top: 10px;
@@ -535,20 +502,6 @@
     margin-bottom: 10px;
   }
 
-  .logOut {
-    position: relative;
-    left: 1%;
-    width: 20%;
-    background-color: royalblue;
-    height: 30px;
-    border-radius: 8px;
-    color: white;
-  }
-
-  .logOut:hover {
-    background-color: rgb(196, 193, 245);
-  }
-
   .deleteAccount {
     position: relative;
     left: 30%;
@@ -559,10 +512,6 @@
     color: white;
     width: 40%;
     margin-bottom: 15px;
-  }
-
-  .deleteAccount:hover {
-    background-color: rgb(119, 8, 8);
   }
 
   .recipeExistsAlert,
@@ -602,13 +551,6 @@
     top: 5%;
   }
 
-  .recipeExistsAlertBtn:hover,
-  .deleteAccountAlertBtn:hover,
-  .deleteRecipeAlertBtn:hover,
-  .clearDiaryWarningBtn:hover {
-    background-color: red;
-  }
-
   .alertText {
     position: relative;
     top: 10%;
@@ -620,10 +562,6 @@
 
   .recipeSavedOK {
     background-color: #589feb;
-  }
-
-  .recipeSavedOK:hover {
-    background-color: #147be9;
   }
 
   .recipeNameBrowseShow,
@@ -780,12 +718,6 @@
     margin-left: 10px;
   }
 
-  .addToDiaryBtn1:hover,
-  .addToDiaryBtn2:hover {
-    background-color: black;
-    color: rgb(240, 121, 230);
-  }
-
   .overlayOnAlert {
     position: fixed;
     top: 0;
@@ -802,5 +734,47 @@
     left: 0px;
     color: white;
     font-size: x-small;
+  }
+
+  .logOut {
+    width: 60%;
+    background-color: royalblue;
+    height: 20px;
+    border-radius: 8px;
+    color: white;
+    font-size: x-small;
+  }
+
+  .info {
+    width: 60%;
+    height: 20px;
+    background-color: royalblue;
+    border-radius: 8px;
+    color: white;
+    font-size: x-small;
+  }
+
+  .appInfo {
+    position: relative;
+    left: 1%;
+    top: 2px;
+    height: 50px;
+    display: block;
+  }
+
+  .displayInfo{
+    position: fixed;
+    top: 30px;
+    left: 5%;
+    background-color: rgb(158, 176, 228);
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 320px;
+    height: 160px;
+    display: block;
+    padding: 20px;
+    border-radius: 15px;
+    z-index: 999;
+    
   }
 }

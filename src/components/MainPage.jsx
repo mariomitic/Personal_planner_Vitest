@@ -14,6 +14,7 @@ import AddToDiary from "./AddToDiary";
 import DeleteRecipeWarning from "./DeleteRecipeWarning";
 import AlertOverlay from "./AlertOverlay";
 import AddRecipeAsIngredient from "./AddRecipeAsIngredient";
+import InfoPage from "./infoPage";
 
 function MainPage(props) {
   {
@@ -90,6 +91,7 @@ function MainPage(props) {
   const [addToDiaryWindow, setaddToDiaryWindow] = useState(false);
   const [addToDiaryData, setaddToDiaryData] = useState([]); //uesd local var inside addToDiary() since useState is async
   const [addRecipeAsIngredient, setaddRecipeAsIngredient] = useState(false);
+  const [seeInfo, setseeInfo] = useState(false);
 
   const focus = useRef();
 
@@ -655,6 +657,13 @@ function MainPage(props) {
     <div className="MainPage">
       <div className="allcontainersTitle">
         <h1 className="welcomeUser">Welcome {props.loginName}</h1>
+        <div className="appInfo">
+        <button
+          className="info"
+          onClick={() => setseeInfo(true)}
+               >
+          <b>App Info</b>
+        </button>
         <button
           className="logOut"
           onClick={() => {
@@ -663,13 +672,14 @@ function MainPage(props) {
         >
           <b>LogOut</b>
         </button>
+        </div>
       </div>
 
       <div
         className="threeContainers"
         style={{
           filter:
-            deleteRecipeWarning || deleteAccountWarning || clearDiaryWarning
+            deleteRecipeWarning || deleteAccountWarning || clearDiaryWarning || seeInfo
               ? "blur(5px)"
               : "none",
         }}
@@ -989,7 +999,11 @@ function MainPage(props) {
           searchedRecipeId={searchedRecipeId}
         />
       ) : null}
-    </div>
+
+        {seeInfo ? (
+          <InfoPage setseeInfo={setseeInfo}/>
+        ) : null}
+      </div>
   );
 }
 

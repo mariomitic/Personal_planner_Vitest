@@ -33,7 +33,7 @@
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 25%;
+    top: 30%;
     left: 30%;
   }
 
@@ -523,17 +523,34 @@
     margin-bottom: 10px;
   }
 
-  .logOut {
+  .appInfo {
     position: relative;
     left: 49%;
-    width: 10%;
+    top: 20px;
+    display: flex;
+
+    height: 70px;
+  }
+
+  .info {
+    width: 80px;
+    height: 20px;
     background-color: royalblue;
-    height: 30px;
+    border-radius: 8px;
+    color: white;
+    font-size: small;
+  }
+
+  .logOut {
+    height: 20px;
+    background-color: royalblue;
+    height: 20px;
     border-radius: 8px;
     color: white;
   }
 
-  .logOut:hover {
+  .logOut:hover,
+  .info:hover {
     background-color: rgb(196, 193, 245);
   }
 
@@ -762,10 +779,26 @@
     z-index: 2;
     pointer-events: all;
   }
-  .signature{
+  .signature {
     position: absolute;
     top: 0px;
-    left:0px;
+    left: 0px;
     color: white;
+  }
+
+  .displayInfo{
+    position: absolute;
+    top: 90px;
+    left: 350px;
+    background-color: rgb(158, 176, 228);
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 300px;
+    height: 160px;
+    display: block;
+    padding: 20px;
+    border-radius: 15px;
+    z-index: 999;
+    
   }
 }
