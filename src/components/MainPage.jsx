@@ -14,7 +14,7 @@ import AddToDiary from "./AddToDiary";
 import DeleteRecipeWarning from "./DeleteRecipeWarning";
 import AlertOverlay from "./AlertOverlay";
 import AddRecipeAsIngredient from "./AddRecipeAsIngredient";
-import InfoPage from "./infoPage";
+import InfoPage from "./InfoPage";
 
 function MainPage(props) {
   {
