@@ -14,7 +14,7 @@ import AddToDiary from "./AddToDiary";
 import DeleteRecipeWarning from "./DeleteRecipeWarning";
 import AlertOverlay from "./AlertOverlay";
 import AddRecipeAsIngredient from "./AddRecipeAsIngredient";
-import InfoPage from "./infoPage";
+import HelpPage from "./HelpPage";
 
 function MainPage(props) {
   {
@@ -1001,7 +1001,7 @@ function MainPage(props) {
       ) : null}
 
         {seeInfo ? (
-          <InfoPage setseeInfo={setseeInfo}/>
+          <HelpPage setseeInfo={setseeInfo}/>
         ) : null}
       </div>
   );
