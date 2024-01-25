@@ -14,7 +14,7 @@ import AddToDiary from "./AddToDiary";
 import DeleteRecipeWarning from "./DeleteRecipeWarning";
 import AlertOverlay from "./AlertOverlay";
 import AddRecipeAsIngredient from "./AddRecipeAsIngredient";
-import InfoPage from "./InfoPage";
+import InfoPage from "./infoPage";
 
 function MainPage(props) {
   {
@@ -665,7 +665,7 @@ function MainPage(props) {
           <b>App Info</b>
         </button>
         <button
-          className="logOut"
+          className="info"
           onClick={() => {
             window.location.reload();
           }}

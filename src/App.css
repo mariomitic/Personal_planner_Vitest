@@ -534,7 +534,7 @@
 
   .info {
     width: 80px;
-    height: 20px;
+    height: 30px;
     background-color: royalblue;
     border-radius: 8px;
     color: white;
@@ -542,7 +542,7 @@
   }
 
   .logOut {
-    height: 20px;
+    height: 30px;
     background-color: royalblue;
     height: 20px;
     border-radius: 8px;
@@ -789,12 +789,12 @@
   .displayInfo{
     position: absolute;
     top: 90px;
-    left: 350px;
+    left:30%;
     background-color: rgb(158, 176, 228);
     margin-left: 10px;
     margin-top: 20px;
-    width: 300px;
-    height: 160px;
+    width: 500px;
+    height: 60%;
     display: block;
     padding: 20px;
     border-radius: 15px;
