@@ -6,7 +6,7 @@ import React from "react";
 import LoginForm from "./components/LoginForm";
 import RegisterPage from "./components/RegisterPage";
 import MainPage from "./components/MainPage";
-import edamamLogo from "/public/white.png"
+
 
 import "./App.css";
 
