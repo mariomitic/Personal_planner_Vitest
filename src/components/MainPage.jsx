@@ -21,7 +21,7 @@ function MainPage(props) {
     /* to reset loginId after deletion */
   }
 
-  const loginId = props.loginId;
+  //const loginId = props.loginId;
 
   const [recipeName, setrecipeName] = useState("");
   const [recipeNameDisplay, setrecipeNameDisplay] = useState("Recipe name");
@@ -150,10 +150,12 @@ function MainPage(props) {
       ? addClrBtn.current.classList.remove("disabled")
       : addClrBtn.current.classList.add("disabled");
 
-    addAllValuesToNutrition();
     getAllRecipes();
     getDaily();
+  }, []);
 
+  useEffect(() => {
+    addAllValuesToNutrition();
     ingredientsAddedToList.length < 3
       ? (setrecipeWeight(""),
         setrecipeCalories(""),
@@ -320,16 +322,34 @@ function MainPage(props) {
     setrecipeFat(Math.ceil(totalFat));
   }
 
-  const accData = import.meta.env.VITE_JSON_PLANNER_ACC;
+  // const accData = import.meta.env.VITE_JSON_PLANNER_ACC;
+  const accData = import.meta.env.VITE_JSON_PLANNER_ACC_BINURL;
+  const masterKey0 = "$2a$10$y";
+  const masterKeyPart1 = import.meta.env.VITE_JSON_PLANNER_ACC_MASTERKEY_PART1;
+  const masterKeyPart2 = import.meta.env.VITE_JSON_PLANNER_ACC_MASTERKEY_PART2;
 
-  const removeUser = (id) => {
-    const ids = parseInt(id);
+  const masterKey = masterKey0.concat(masterKeyPart1).concat(masterKeyPart2);
 
-    fetch(`${accData}/${ids}`, {
-      method: "DELETE",
+  const removeUser = () => {
+    //const ids = parseInt(id);
+
+    const newUserList = props.jsondata
+      .map((item) => {
+        if (item.username === props.loginName) {
+          return null;
+        }
+        return item;
+      })
+      .filter(Boolean);
+
+    fetch(`${accData}`, {
+      // method: "DELETE",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "X-MASTER-KEY": `${masterKey}`,
       },
+      body: JSON.stringify(newUserList),
     })
       .then((res) => res.json())
       .then(() => {
@@ -658,20 +678,17 @@ function MainPage(props) {
       <div className="allcontainersTitle">
         <h1 className="welcomeUser">Welcome {props.loginName}</h1>
         <div className="appInfo">
-        <button
-          className="info"
-          onClick={() => setseeInfo(true)}
-               >
-          <b>App Info</b>
-        </button>
-        <button
-          className="info"
-          onClick={() => {
-            window.location.reload();
-          }}
-        >
-          <b>LogOut</b>
-        </button>
+          <button className="info" onClick={() => setseeInfo(true)}>
+            <b>App Info</b>
+          </button>
+          <button
+            className="info"
+            onClick={() => {
+              window.location.reload();
+            }}
+          >
+            <b>LogOut</b>
+          </button>
         </div>
       </div>
 
@@ -679,7 +696,10 @@ function MainPage(props) {
         className="threeContainers"
         style={{
           filter:
-            deleteRecipeWarning || deleteAccountWarning || clearDiaryWarning || seeInfo
+            deleteRecipeWarning ||
+            deleteAccountWarning ||
+            clearDiaryWarning ||
+            seeInfo
               ? "blur(5px)"
               : "none",
         }}
@@ -973,7 +993,7 @@ function MainPage(props) {
       {deleteAccountWarning ? (
         <DeleteAccWarning
           setdeleteAccountWarning={setdeleteAccountWarning}
-          loginId={loginId}
+          // loginId={loginId}
           removeUser={removeUser}
         />
       ) : null}
@@ -1000,10 +1020,8 @@ function MainPage(props) {
         />
       ) : null}
 
-        {seeInfo ? (
-          <HelpPage setseeInfo={setseeInfo}/>
-        ) : null}
-      </div>
+      {seeInfo ? <HelpPage setseeInfo={setseeInfo} /> : null}
+    </div>
   );
 }
 

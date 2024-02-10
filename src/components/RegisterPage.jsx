@@ -1,10 +1,12 @@
 import { useFormik } from "formik";
 import { React, useState } from "react";
 import AlertSuccess from "./AlertSuccess";
+import AlertNetworkError from "./AlertNetworkError";
 import AlertUserExists from "./AlertUserExists";
 
 function RegisterPage(props) {
   const [success, setsuccess] = useState(false);
+  const [networkError, setnetworkError] = useState(false)
   const [userExists, setuserExists] = useState(false);
 
   const checkForExistingUser = (load) => {
@@ -18,20 +20,40 @@ function RegisterPage(props) {
     }
   };
 
-  const accData = import.meta.env.VITE_JSON_PLANNER_ACC;
+  // const accData = import.meta.env.VITE_JSON_PLANNER_ACC;
 
-  const registerNewUser = (load) => {
-    fetch(`${accData}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(load),
-    })
-      .then((res) => {
-        res.json(), console.log(res);
-      })
-      .catch((err) => alert(err));
+  const accData = import.meta.env.VITE_JSON_PLANNER_ACC_BINURL;
+  const masterKey0 = "$2a$10$y";
+  const masterKeyPart1 = import.meta.env.VITE_JSON_PLANNER_ACC_MASTERKEY_PART1;
+  const masterKeyPart2 = import.meta.env.VITE_JSON_PLANNER_ACC_MASTERKEY_PART2;
+
+  const masterKey = masterKey0.concat(masterKeyPart1).concat(masterKeyPart2);
+
+  const registerNewUser = async (load) => {
+    const loadMerged = [...props.jsondata, load];
+
+    try {
+      const response = await fetch(`${accData}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "X-MASTER-KEY": `${masterKey}`,
+        },
+        body: JSON.stringify(loadMerged),
+        
+      });
+      if(response.ok){
+        setsuccess(true);
+      }
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+        setnetworkError(true)
+      }
+    } catch (error) {
+      console.error("Error posting data:", error);
+      setnetworkError(true)
+    }
+    
   };
 
   const formik = useFormik({
@@ -52,7 +74,7 @@ function RegisterPage(props) {
         return null;
       } else {
         registerNewUser(load);
-        setsuccess(true);
+        
       }
     },
     validate: (values) => {
@@ -187,7 +209,7 @@ function RegisterPage(props) {
               className="registerCancel"
               onClick={() => {
                 props.setlogOrregister("login");
-               // window.location.reload();
+                // window.location.reload(); //dont need it
               }}
             >
               CANCEL
@@ -198,6 +220,12 @@ function RegisterPage(props) {
 
       {success ? (
         <AlertSuccess setlogOrregister={props.setlogOrregister} />
+      ) : null}
+
+      {networkError ? (
+        <AlertNetworkError 
+        setnetworkError={setnetworkError} 
+        setlogOrregister={props.setlogOrregister} />
       ) : null}
 
       {userExists ? (

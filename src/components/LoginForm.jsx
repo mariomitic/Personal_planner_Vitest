@@ -11,18 +11,37 @@ function LoginForm(props) {
   const passwordInput = useRef();
   const showPasswordicon = useRef();
 
-  const accData = import.meta.env.VITE_JSON_PLANNER_ACC;
+  // const accData = import.meta.env.VITE_JSON_PLANNER_ACC;
+
+  const accData = import.meta.env.VITE_JSON_PLANNER_ACC_BINURL;
+  const masterKey0 = "$2a$10$y";
+  const masterKeyPart1 = import.meta.env.VITE_JSON_PLANNER_ACC_MASTERKEY_PART1;
+  const masterKeyPart2 = import.meta.env.VITE_JSON_PLANNER_ACC_MASTERKEY_PART2;
+
+  const masterKey = masterKey0.concat(masterKeyPart1).concat(masterKeyPart2);
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       try {
-        const response = await fetch(`${accData}`);
+        const response = await fetch(`${accData}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "X-MASTER-KEY": `${masterKey}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
         const jsonData = await response.json();
-        props.setjsondata(jsonData);
-       } catch (error) {
+
+        props.setjsondata(jsonData.record);
+      } catch (error) {
         alert("Error fetching data from LoginForm:", error);
       }
-    }
+    };
 
     fetchData();
   }, []);

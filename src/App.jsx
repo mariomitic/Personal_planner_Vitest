@@ -12,10 +12,12 @@ import "./App.css";
 
 function App() {
   const [logOrregister, setlogOrregister] = useState("login"); //"login" after logout
-  const [jsondata, setjsondata] = useState();
+  const [jsondata, setjsondata] = useState([]);
   const [loginId, setloginId] = useState(""); //reset after deletion
   const [loginName, setloginName] = useState(""); //reset after deletion
   const [loginSuccess, setloginSuccess] = useState(false); //false after log out
+
+
 
   if (loginSuccess === true) {
     document.body.style.backgroundImage =
@@ -28,7 +30,7 @@ function App() {
             setlogOrregister={setlogOrregister}
             setloginSuccess={setloginSuccess}
             jsondata={jsondata}
-            loginId={loginId}
+            //loginId={loginId}
             loginName={loginName}
             setloginId={setloginId}
           />
