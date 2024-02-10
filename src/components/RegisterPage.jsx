@@ -131,7 +131,14 @@ function RegisterPage(props) {
 
   return (
     <div>
+           <img
+          src="./my-Calculate Your Food.png"
+          width="400px"
+          alt="Calculate Your Food"
+        ></img>
       <div className="registerContainer">
+ 
+
         <form onSubmit={formik.handleSubmit}>
           <h2 className="registerTitle">Register</h2>
 

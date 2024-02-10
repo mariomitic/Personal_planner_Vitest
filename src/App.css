@@ -104,6 +104,12 @@
     cursor: pointer;
   }
 
+  img[src="./my-Calculate Your Food.png"] {
+    position: fixed;
+    top: 20%;
+    left: 25%;
+  }
+
   .newregisterButton {
     display: block;
   }

@@ -44,8 +44,9 @@
   }
 
   img[src="./my-Calculate Your Food.png"] {
-    position: absolute;
-    top: -26%;
+    position: fixed;
+    top: 24%;
+    left: 5%;
   }
 
   img[src="./by maxa.png"] {

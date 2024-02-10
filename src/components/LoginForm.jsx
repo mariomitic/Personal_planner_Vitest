@@ -105,7 +105,14 @@ function LoginForm(props) {
 
   return (
     <div>
+            <img
+          src="./my-Calculate Your Food.png"
+          width="400px"
+          alt="Calculate Your Food"
+        ></img>
       <div className="loginContainer">
+
+
         {/* <div id="edamam-badge" data-color="white" className="edamambadge"></div>
         <hr></hr> */}
         <form onSubmit={formik.handleSubmit}>
