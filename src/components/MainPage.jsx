@@ -354,7 +354,7 @@ function MainPage(props) {
       .then((res) => res.json())
       .then(() => {
         props.setlogOrregister("login");
-        props.setloginId("");
+        //props.setloginId("");
         window.location.reload();
       })
       .catch((err) => setalertMessage("From removeUser Network error: " + err));
@@ -1000,7 +1000,7 @@ function MainPage(props) {
       {clearDiaryWarning ? (
         <ClearDiaryWarning
           setclearDiaryWarning={setclearDiaryWarning}
-          loginId={loginId}
+          //loginId={loginId}
           clearAllDiary={clearAllDiary}
         />
       ) : null}
