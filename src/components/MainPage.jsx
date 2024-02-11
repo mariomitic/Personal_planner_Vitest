@@ -145,16 +145,18 @@ function MainPage(props) {
     }
   }
 
-  useEffect(() => {
-    displaysearchResults !== "" && enteredAmount > 0
-      ? addClrBtn.current.classList.remove("disabled")
-      : addClrBtn.current.classList.add("disabled");
 
+  useEffect(() => {
     getAllRecipes();
     getDaily();
   }, []);
 
   useEffect(() => {
+
+    displaysearchResults !== "" && enteredAmount > 0
+      ? addClrBtn.current.classList.remove("disabled")
+      : addClrBtn.current.classList.add("disabled");
+
     addAllValuesToNutrition();
     ingredientsAddedToList.length < 3
       ? (setrecipeWeight(""),
