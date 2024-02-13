@@ -196,7 +196,7 @@
   .overlay {
     position: absolute;
     display: flex;
-    top: 0%;
+    top: 14.8%;
     left: 0%;
     width: 250px;
     height: 358px;
@@ -210,7 +210,7 @@
   .overlayWrongUser {
     position: absolute;
     display: flex;
-    top: 0%;
+    top: 19.7%;
     left: 0%;
     width: 290px;
     height: 235px;

@@ -78,7 +78,7 @@
   }
 
   .badge {
-   margin-top: 2px;
+   margin-Top: 2px;
     
   }
 
@@ -180,8 +180,7 @@
   .overlay {
     position: absolute;
     display: flex;
-    top: 14.2%;
-    left: 13.8%;
+    top: 0%;
     width: 250px;
     height: 359px;
     border-radius: 15px;
@@ -194,8 +193,7 @@
   .overlayWrongUser {
     position: absolute;
     display: flex;
-    top: 19%;
-    left: 13.8%;
+    top: 0%;
     height: 195px;
     justify-content: center;
     align-items: center;
