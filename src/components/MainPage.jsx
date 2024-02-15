@@ -21,8 +21,6 @@ function MainPage(props) {
     /* to reset loginId after deletion */
   }
 
-  //const loginId = props.loginId;
-
   const [recipeName, setrecipeName] = useState("");
   const [recipeNameDisplay, setrecipeNameDisplay] = useState("Recipe name");
   const createNewRecipeRef = useRef();
@@ -145,14 +143,12 @@ function MainPage(props) {
     }
   }
 
-
   useEffect(() => {
     getAllRecipes();
     getDaily();
   }, []);
 
   useEffect(() => {
-
     displaysearchResults !== "" && enteredAmount > 0
       ? addClrBtn.current.classList.remove("disabled")
       : addClrBtn.current.classList.add("disabled");
@@ -324,6 +320,7 @@ function MainPage(props) {
     setrecipeFat(Math.ceil(totalFat));
   }
 
+  //changed back end host and altered the code
   // const accData = import.meta.env.VITE_JSON_PLANNER_ACC;
   const accData = import.meta.env.VITE_JSON_PLANNER_ACC_BINURL;
   const masterKey0 = "$2a$10$y";
@@ -393,15 +390,24 @@ function MainPage(props) {
       },
     ];
 
-    fetch(`${appRecipes}`, {
-      method: "POST",
+    // const newRecipeToPUT = [...allRecipes, newRecipeToSave];//new load
+
+    // fetch(`${appRecipes}`, {
+    //   method: "POST",
+
+    fetch(`${appRecipesUrl}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "X-MASTER-KEY": `${appRecipesKey}`, //JSONbin key
       },
-      body: JSON.stringify(newRecipeToSave),
+      body: JSON.stringify([...allRecipes, newRecipeToSave]),
     })
       .then((res) => res.json())
-      .then(setrecipeName(""))
+      .then(
+        setrecipeName(""),
+        setsavedDeletedMessage("Recipe saved successfully!")
+      )
       .catch((err) =>
         setalertMessage("From newRecipeToSave Network error: " + err)
       );
@@ -429,66 +435,85 @@ function MainPage(props) {
       },
     ]);
     setrecipeSavedSuccessfully(true);
-    setsavedDeletedMessage("Recipe saved successfully!");
+
     setrecipeName("");
     setrecipeNameDisplay("Recipe name");
   }
 
+  // function deleteRecipe(id) {
+  //   if (id) {
+  //     fetch(`${appRecipes}/${id}`, {
   function deleteRecipe(id) {
-    if (id) {
-      fetch(`${appRecipes}/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
+    const newRecipeToSave = allRecipes
+      .map((item) => {
+        if (item.name === recipeName) {
+          return null;
+        }
+        return item;
       })
-        .then((res) => res.json())
-        .catch((err) =>
-          setalertMessage(`Error fetching recipes: Recipe not found! ${err}`)
-        );
-      setsavedDeletedMessage("Recipe deleted successfully!");
-      getAllRecipes();
-      setsearchedRecipeId(0);
-      setingredientsAddedToList([
-        {
-          id: 0,
-          name: "initial01",
-          amount: "number",
-          calories: "number",
-          fat: "number",
-          carbs: "number",
-          protein: "number",
-          sodium: "number",
-        },
-        {
-          id: 1,
-          name: "initial02",
-          amount: "number",
-          calories: "number",
-          fat: "number",
-          carbs: "number",
-          protein: "number",
-          sodium: "number",
-        },
-      ]);
-      setrecipeNameDisplay("Recipe name");
-      setrecipeName("");
-    }
+      .filter(Boolean);
+
+    fetch(`${appRecipesUrl}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-MASTER-KEY": `${appRecipesKey}`,
+      },
+      body: JSON.stringify(newRecipeToSave),
+    })
+      .then((res) => res.json())
+      .catch((err) =>
+        setalertMessage(`Error fetching recipes: Recipe not found! ${err}`)
+      );
+    setsavedDeletedMessage("Recipe deleted successfully!");
+    getAllRecipes();
+    setsearchedRecipeId(0);
+    setingredientsAddedToList([
+      {
+        id: 0,
+        name: "initial01",
+        amount: "number",
+        calories: "number",
+        fat: "number",
+        carbs: "number",
+        protein: "number",
+        sodium: "number",
+      },
+      {
+        id: 1,
+        name: "initial02",
+        amount: "number",
+        calories: "number",
+        fat: "number",
+        carbs: "number",
+        protein: "number",
+        sodium: "number",
+      },
+    ]);
+    setrecipeNameDisplay("Recipe name");
+    setrecipeName("");
+    //}
   }
 
-  const appRecipes = import.meta.env.VITE_JSON_PLANNER_RECIPES;
+  // const appRecipes = import.meta.env.VITE_JSON_PLANNER_RECIPES;
+
+  const recipeKeyFirstPart = "$2a$10$Oc.";
+  const appRecipesUrl = import.meta.env.VITE_JSON_RECIPES_BINURL;
+  const appRecipesKey =
+    recipeKeyFirstPart + import.meta.env.VITE_JSON_RECIPES_MASTERKEY;
 
   function getAllRecipes() {
-    let fetchedRecipes;
-
-    fetch(`${appRecipes}`, {
+    // fetch(`${appRecipes}`, { //render.com
+    fetch(`${appRecipesUrl}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "X-MASTER-KEY": `${appRecipesKey}`, //JSONbin key
       },
     })
       .then((res) => res.json())
-      .then((data) => setallRecipes(data))
+      // .then((data) => setallRecipes(data))
+      .then((data) => setallRecipes(data.record)) //JSONbin
       .catch((err) => setalertMessage("Error: Recipe not found!"));
   }
 
@@ -610,7 +635,8 @@ function MainPage(props) {
     setaddRecipeAsIngredient(false);
   };
 
-  const accDaily = import.meta.env.VITE_JSON_PLANNER_DAILY;
+  //const accDaily = import.meta.env.VITE_JSON_PLANNER_DAILY;
+  const accDaily = import.meta.env.VITE_JSON_DIARY_BINURL;
 
   function getDaily() {
     fetch(`${accDaily}`, {
@@ -620,7 +646,7 @@ function MainPage(props) {
       },
     })
       .then((res) => res.json())
-      .then((data) => setaddToDiaryData(data))
+      .then((data) => setaddToDiaryData(data.record))
       .catch((err) => setalertMessage("Error daily: Recipe not found!"));
   }
 
@@ -632,46 +658,59 @@ function MainPage(props) {
     const netCarb =
       (recipeCarbs - recipeFiber) / (recipeWeight / weightEntered);
     const netCalories = recipeCalories / (recipeWeight / weightEntered);
-    const diaryData = [
-      {
-        id: 0,
-        date: dateRef,
-        name: recipeName,
-        weight: weightEntered,
-        calorie: netCalories,
-        carb: netCarb,
-      },
-    ];
-
+    const diaryData = {
+      id: 0,
+      date: dateRef,
+      name: recipeName,
+      weight: weightEntered,
+      calorie: netCalories,
+      carb: netCarb,
+    };
     fetch(`${accDaily}`, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "X-MASTER-KEY": `${appRecipesKey}`, //JSONbin key
       },
-      body: JSON.stringify(diaryData[0]),
+      body: JSON.stringify([...addToDiaryData, diaryData]),
     })
       .then((res) => res.json())
       .then(removeAllIngredients())
+      .then(getDaily())
       .catch((err) => setalertMessage("From addToDiary Network error: " + err));
   }
 
   const clearAllDiary = () => {
-    for (let i = 0; i < addToDiaryData.length; i++) {
-      fetch(`${accDaily}/${addToDiaryData[i].id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
+    const diaryIsClear = [
+      {
+        id: 1,
+        date: "2024-02-14",
+        name: "",
+        weight: "",
+        calorie: 0,
+        carb: 0,
+      },
+    ];
+    //for (let i = 0; i < addToDiaryData.length; i++) {
+    // fetch(`${accDaily}/${addToDiaryData[i].id}`, {
+    fetch(`${accDaily}`, {
+      // method: "DELETE",
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-MASTER-KEY": `${appRecipesKey}`, //JSONbin key
+      },
+      body: JSON.stringify(diaryIsClear),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setaddToDiaryData([{}]); //{}
       })
-        .then((res) => res.json())
-        .then((data) => {
-          setaddToDiaryData([]);
-        })
 
-        .catch((err) =>
-          setalertMessage("From clearAllDiary Network error: " + err)
-        );
-    }
+      .catch((err) =>
+        setalertMessage("From clearAllDiary Network error: " + err)
+      );
+    // }
     setclearDiaryWarning(false);
   };
 
@@ -990,6 +1029,7 @@ function MainPage(props) {
         <RecipeSaved
           setrecipeSavedSuccessfully={setrecipeSavedSuccessfully}
           savedDeletedMessage={savedDeletedMessage}
+          getAllRecipes={getAllRecipes}
         />
       ) : null}
       {deleteAccountWarning ? (
@@ -1019,6 +1059,7 @@ function MainPage(props) {
           setdeleteRecipeWarning={setdeleteRecipeWarning}
           deleteRecipe={deleteRecipe}
           searchedRecipeId={searchedRecipeId}
+          getAllRecipes={getAllRecipes}
         />
       ) : null}
 

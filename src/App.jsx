@@ -41,12 +41,14 @@ function App() {
 
   if (logOrregister === "login") {
     return (
-      <div className="App">
-        {/* <img
+      <div className="AppLogin">
+
+        
+                <img
           src="./my-Calculate Your Food.png"
           width="400px"
           alt="Calculate Your Food"
-        ></img> */}
+        ></img>
 
         <LoginForm
           setlogOrregister={setlogOrregister}
@@ -72,12 +74,12 @@ function App() {
 
   if (logOrregister === "register") {
     return (
-      <div className="App">
-        {/* <img
+      <div className="AppLogin">
+        <img
           src="./my-Calculate Your Food.png"
           width="400px"
           alt="Calculate Your Food"
-        ></img> */}
+        ></img>
         <RegisterPage setlogOrregister={setlogOrregister} jsondata={jsondata} />
 
         <img

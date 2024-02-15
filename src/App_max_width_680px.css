@@ -37,6 +37,26 @@
     left: 20%;
    
   }
+.AppLogin{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  
+}
+
+
+.AppRegister{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+}
+
 
   .loginContainer,
   .registerContainer {
@@ -55,20 +75,20 @@
   img[src="./my-Calculate Your Food.png"] {
     position: relative;
     top: 20%;
-    left: -15%;
+    left: -5%;
   }
 
   img[src="./by maxa.png"] {
     position: relative;
     top: 20%;
-    left: -13%;
+    left: 0%;
   }
 
   .badge {
     margin-top: 2px;
     position: relative;
     top: 20%;
-    left: -13%;     
+    left: 0%;     
    }
 
   .registerTitle {
@@ -196,8 +216,8 @@
   .overlay {
     position: absolute;
     display: flex;
-    top: 14.8%;
-    left: 0%;
+    top: 14.4%;
+    left: 13.7%;
     width: 250px;
     height: 358px;
     border-radius: 15px;
@@ -210,8 +230,8 @@
   .overlayWrongUser {
     position: absolute;
     display: flex;
-    top: 19.7%;
-    left: 0%;
+    top: 19%;
+    left: 14%;
     width: 290px;
     height: 235px;
     border-radius: 15px;

@@ -8,7 +8,7 @@ function DeleteRecipeWarning(props) {
         className="deleteRecipeAlertBtn"
         onClick={() => {
           props.deleteRecipe(props.searchedRecipeId),
-            props.setdeleteRecipeWarning(false);
+            props.setdeleteRecipeWarning(false), props.getAllRecipes();
         }}
       >
         Yes

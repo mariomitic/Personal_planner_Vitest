@@ -5,7 +5,7 @@ function RecipeSaved(props) {
     <div className="recipeExistsAlert recipeSaved">
       <h2 className="alertText">{props.savedDeletedMessage}</h2>
       <button
-        onClick={() => props.setrecipeSavedSuccessfully(false)}
+        onClick={() => {props.setrecipeSavedSuccessfully(false), props.getAllRecipes()}}
         className="recipeExistsAlertBtn recipeSavedOK"
       >
         OK

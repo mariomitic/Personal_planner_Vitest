@@ -37,6 +37,15 @@
     left: 30%;
   }
 
+  .AppLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 30%;
+    left: 40%;
+  }
+
   .MainPage {
     position: relative;
     top: -200px;
@@ -107,7 +116,7 @@
   img[src="./my-Calculate Your Food.png"] {
     position: fixed;
     top: 20%;
-    left: 25%;
+    left: 35hw;
   }
 
   .newregisterButton {

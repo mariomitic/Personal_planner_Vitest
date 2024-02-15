@@ -131,11 +131,11 @@ function RegisterPage(props) {
 
   return (
     <div>
-           <img
+           {/* <img
           src="./my-Calculate Your Food.png"
           width="400px"
           alt="Calculate Your Food"
-        ></img>
+        ></img> */}
       <div className="registerContainer">
  
 
