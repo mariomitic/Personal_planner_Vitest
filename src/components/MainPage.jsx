@@ -503,6 +503,7 @@ function MainPage(props) {
     recipeKeyFirstPart + import.meta.env.VITE_JSON_RECIPES_MASTERKEY;
 
   function getAllRecipes() {
+    console.log(appRecipesKey)
     // fetch(`${appRecipes}`, { //render.com
     fetch(`${appRecipesUrl}`, {
       method: "GET",
@@ -643,6 +644,7 @@ function MainPage(props) {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "X-MASTER-KEY": `${appRecipesKey}`, //JSONbin key
       },
     })
       .then((res) => res.json())
