@@ -503,7 +503,7 @@ function MainPage(props) {
     recipeKeyFirstPart + import.meta.env.VITE_JSON_RECIPES_MASTERKEY;
 
   function getAllRecipes() {
-    console.log(appRecipesKey)
+    
     // fetch(`${appRecipes}`, { //render.com
     fetch(`${appRecipesUrl}`, {
       method: "GET",
@@ -661,7 +661,7 @@ function MainPage(props) {
       (recipeCarbs - recipeFiber) / (recipeWeight / weightEntered);
     const netCalories = recipeCalories / (recipeWeight / weightEntered);
     const diaryData = {
-      id: 0,
+      
       date: dateRef,
       name: recipeName,
       weight: weightEntered,
@@ -685,7 +685,7 @@ function MainPage(props) {
   const clearAllDiary = () => {
     const diaryIsClear = [
       {
-        id: 1,
+        
         date: "2024-02-14",
         name: "",
         weight: "",
