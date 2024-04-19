@@ -30,7 +30,7 @@ function IngredientToAdd(props) {
             {renderedIngredientcomponent.amount}g
           </a>
           <a style={{ fontSize: "12px" }}>
-            Cal:{Math.floor(renderedIngredientcomponent.calories)}g;{" "}
+            Cal:{Math.floor(renderedIngredientcomponent.calories)};{" "}
           </a>
           <a style={{ fontSize: "12px" }}>
             Carb:
