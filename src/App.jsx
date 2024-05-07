@@ -59,7 +59,7 @@ function App() {
           setloginSuccess={setloginSuccess}
         />
 
-        <img
+        {/* <img
           src="./by maxa.png"
           width="100px"
           height="20px"
@@ -67,7 +67,7 @@ function App() {
         ></img>
          <div className="badge">
          <a href="https://www.edamam.com" title="Powered by Edamam" target="_blank"><img alt="Powered by Edamam" src="https://developer.edamam.com/images/white.png" height="40" width="200"></img></a>
-         </div>
+         </div> */}
       </div>
     );
   }
@@ -82,12 +82,12 @@ function App() {
         ></img>
         <RegisterPage setlogOrregister={setlogOrregister} jsondata={jsondata} />
 
-        <img
+        {/* <img
           src="./by maxa.png"
           width="100px"
           height="20px"
           alt="By Maxa"
-        ></img>
+        ></img> */}
       </div>
     );
   }

@@ -14,7 +14,7 @@ Additionally, you can calculate your daily consumption if you add all your intak
 There is no functionality for overwriting the existing recipe, so after recipe has changed (adding or removing the ingredient) name resets.
 You can browse available recipes, show them (“show”) and then add to diary, or use them as ingredient themselves (“add”).
 </li>
-   <li>Second block is to search data base for ingredients to be added to the recipe. If found, type quantity wanted in grams and click “Add”.
+   <li>Second block is to search data base for ingredients to be added to the recipe. If found, type quantity wanted in grams and click add to "Recipe" or add to "Diary".
 If you can't find ingredient in data base, you can add custom ingredient by filling “Add custom Ingredient” form.
 </li>
    <li>Third block is to read current shown recipe stats (nutrition facts), save or delete recipe. Also, to add recipe to a daily diary or clear the diary.

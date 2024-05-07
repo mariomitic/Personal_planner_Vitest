@@ -15,6 +15,10 @@
     font-family: "Tahoma";
   }
 
+  p{
+    margin: 3px;
+  }
+
   input:autofill {
     background-color: white;
     /* does not work at Google Chrome */
@@ -38,12 +42,13 @@
   }
 
   .AppLogin{
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
-    top: 30%;
-    left: 40%;
+
+    top: 200px;
+
   }
 
   .MainPage {
@@ -58,6 +63,7 @@
 
   .loginContainer,
   .registerContainer {
+    position: relative;
     width: 250px;
     background-color: rgba(255, 255, 255, 0.35);
     padding: 20px;
@@ -87,8 +93,14 @@
   }
 
   .badge {
+   /* position: relative; */
    margin-Top: 2px;
-    
+
+  }
+
+  img[src="https://developer.edamam.com/images/white.png"] {
+    display: flex;
+    margin: auto;
   }
 
   .redborder {
@@ -114,10 +126,21 @@
   }
 
   img[src="./my-Calculate Your Food.png"] {
-    position: fixed;
-    top: 20%;
-    left: 35hw;
+    display: flex;
+    margin: auto;
+    position: relative;
+  
+    /* left: 35hw; */
   }
+
+  img[src="./by maxa.png"] {
+    display: flex;
+    margin: auto;
+
+
+  }
+
+
 
   .newregisterButton {
     display: block;
@@ -187,9 +210,9 @@
 
   /* Style for the overlay background */
   .overlay {
-    position: absolute;
+    position: relative;
     display: flex;
-    top: 0%;
+    top: -418px;
     width: 250px;
     height: 359px;
     border-radius: 15px;
@@ -200,9 +223,9 @@
   }
 
   .overlayWrongUser {
-    position: absolute;
+    position: relative;
     display: flex;
-    top: 0%;
+    top: -296px;
     height: 195px;
     justify-content: center;
     align-items: center;
@@ -215,6 +238,10 @@
   .wrongUserText,
   .noIgrFoundTxt {
     color: red;
+  }
+
+  .AddIngredientTo {
+    margin-left: 18px;
   }
 
   /* Style for the alert popup */
@@ -444,12 +471,13 @@
   .removeAll,
   .removeRecipe {
     position: relative;
-    left: 40%;
+    left: 30%;
     background-color: red;
     border-radius: 5px;
     height: 30px;
     color: white;
     margin-top: 10px;
+    width: 100px;
   }
   .removeAll:hover {
     background-color: rgb(165, 53, 53);
@@ -463,13 +491,21 @@
   }
 
   .addToDiary {
-    position: relative;
-    left: 33%;
+   
     background-color: royalblue;
     border-radius: 5px;
-    width: 30%;
+    
     height: 30px;
     color: white;
+
+    width: 100px;
+    position: relative;
+    left: 33%;
+   
+   
+   
+    color: white;
+    margin-top: 10px;
   }
 
   .addToOtherRecipeBtns {
@@ -499,7 +535,7 @@
     background-color: royalblue;
     border-radius: 5px;
     margin-bottom: 10px;
-    width: 30%;
+    width: 100px;
     height: 30px;
     color: white;
   }
@@ -569,8 +605,8 @@
 
   .deleteAccount {
     position: relative;
-    left: 33%;
-    top: 75px;
+    left: 32%;
+    top: 15px;
     background-color: red;
     height: 30px;
     border-radius: 8px;
@@ -807,11 +843,11 @@
     margin-left: 10px;
     margin-top: 20px;
     width: 500px;
-    height: 60%;
+    height: 53%;
     display: block;
     padding: 20px;
     border-radius: 15px;
     z-index: 999;
-    
+
   }
 }

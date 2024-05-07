@@ -175,6 +175,16 @@ function LoginForm(props) {
         </form>
       </div>
 
+             <img
+          src="./by maxa.png"
+          width="100px"
+          height="20px"
+          alt="By Maxa"
+        ></img>
+         <div className="badge">
+         <a href="https://www.edamam.com" title="Powered by Edamam" target="_blank"><img alt="Powered by Edamam" src="https://developer.edamam.com/images/white.png" height="40" width="200"></img></a>
+         </div>
+
       {loginpasswordInvalid ? (
         <AlertWrongUser
           setlogOrregister={props.setlogOrregister}

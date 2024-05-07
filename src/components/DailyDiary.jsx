@@ -16,6 +16,8 @@ function DailyDiary(props) {
     (item) => item.date === formattedDate
   );
 
+  
+
   const totalValues = results.reduce(
     (accumulator, currentItem) => {
       return {

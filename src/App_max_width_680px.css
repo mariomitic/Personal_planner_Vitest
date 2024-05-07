@@ -15,6 +15,10 @@
     font-family: "Tahoma";
   }
 
+  p{
+    margin: 3px;
+  }
+
   input:autofill {
     background-color: white;
     /* does not work at Google Chrome */
@@ -38,12 +42,13 @@
    
   }
 .AppLogin{
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  top: 30%;
-  left: 10%;
+  
+  top: 100px;
+  
   
 }
 
@@ -68,28 +73,35 @@
 
   .MainPage {
     position: relative;
-    top: -270px;
-    left: -50px;
+    top: -350px;
+    left: -70px;
   }
 
   img[src="./my-Calculate Your Food.png"] {
+    display: flex;
+    margin: auto;
     position: relative;
-    top: 20%;
-    left: -5%;
+    
+    
   }
 
   img[src="./by maxa.png"] {
     position: relative;
-    top: 20%;
-    left: 0%;
+    display: flex;
+    margin: auto;
   }
 
   .badge {
     margin-top: 2px;
     position: relative;
-    top: 20%;
-    left: 0%;     
+   
    }
+
+   img[src="https://developer.edamam.com/images/white.png"] {
+    display: flex;
+    margin: auto;
+  }
+
 
   .registerTitle {
     margin-bottom: 5px;
@@ -214,10 +226,9 @@
 
   /* Style for the overlay background */
   .overlay {
-    position: absolute;
+    position: relative;
     display: flex;
-    top: 14.4%;
-    left: 13.7%;
+    top: -418px;
     width: 250px;
     height: 358px;
     border-radius: 15px;
@@ -228,10 +239,10 @@
   }
 
   .overlayWrongUser {
-    position: absolute;
+    position: relative;
     display: flex;
-    top: 19%;
-    left: 14%;
+    top: -296px;
+  
     width: 290px;
     height: 235px;
     border-radius: 15px;
@@ -243,6 +254,10 @@
   .wrongUserText,
   .noIgrFoundTxt {
     color: red;
+  }
+
+  .AddIngredientTo {
+    margin-left: 27px;
   }
 
   /* Style for the alert popup */
@@ -536,7 +551,7 @@
 
   .deleteAccount {
     position: relative;
-    left: 30%;
+    left: 25%;
     top: 15px;
     background-color: red;
     height: 30px;
@@ -801,8 +816,8 @@
     background-color: rgb(158, 176, 228);
     margin-left: 10px;
     margin-top: 20px;
-    width: 70%;
-    height: 78%;
+    width: 60%;
+    max-height: 70vh;
     display: block;
     padding: 20px;
     border-radius: 15px;

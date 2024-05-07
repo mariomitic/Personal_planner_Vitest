@@ -235,6 +235,13 @@ function RegisterPage(props) {
         setlogOrregister={props.setlogOrregister} />
       ) : null}
 
+<img
+          src="./by maxa.png"
+          width="100px"
+          height="20px"
+          alt="By Maxa"
+        ></img>
+
       {userExists ? (
         <AlertUserExists
           setlogOrregister={props.setlogOrregister}

@@ -232,6 +232,59 @@ function MainPage(props) {
     amountInput.current.value = "";
   }
 
+
+  function addIngredientToDiary() {
+    // takes an ingredient and put it in array of objects with ingredient data
+    const newIngredientToAdd = {
+      id: ingredientIDnumber,
+
+      name: searchResults.hints[0].food.label,
+      amount: enteredAmount,
+      calories:
+        searchResults.hints[0].food.nutrients.ENERC_KCAL /
+        (100 / enteredAmount),
+      carbs:
+        searchResults.hints[0].food.nutrients.CHOCDF / (100 / enteredAmount),
+      fiber:
+        !searchResults.hints[0].food.nutrients.FIBTG / (100 / enteredAmount)
+          ? 0
+          : searchResults.hints[0].food.nutrients.FIBTG / (100 / enteredAmount),
+      protein:
+        searchResults.hints[0].food.nutrients.PROCNT / (100 / enteredAmount),
+      fat: searchResults.hints[0].food.nutrients.FAT / (100 / enteredAmount),
+    }
+
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = (today.getMonth() + 1).toString().padStart(2, "0"); // Months are zero-based
+  const day = today.getDate().toString().padStart(2, "0");
+  const formattedDate = `${year}-${month}-${day}`;
+
+  const diaryData = {
+    
+    date: formattedDate,
+    name: newIngredientToAdd.name,
+    weight: newIngredientToAdd.amount,
+    calorie: newIngredientToAdd.calories,
+    carb: newIngredientToAdd.carbs - newIngredientToAdd.fiber,
+  };
+
+  fetch(`${accDaily}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "X-MASTER-KEY": `${appRecipesKey}`, //JSONbin key
+    },
+    body: JSON.stringify([...addToDiaryData, diaryData]),
+  })
+    .then((res) => res.json())
+    .then(removeAllIngredients())
+    .then(getDaily())
+    .catch((err) => setalertMessage("From addToDiary Network error: " + err));
+
+    clearIngrField()
+    };
+
   function addCustomIngr() {
     setaddingCustomIngr(!addingCustomIngr);
   }
@@ -774,7 +827,7 @@ function MainPage(props) {
               </button>
             </div>
 
-            <div className="searchField">
+            {/* <div className="searchField">
               <input
                 ref={searchField}
                 className="searchInput"
@@ -787,7 +840,7 @@ function MainPage(props) {
               <button className="recipeBtn" onClick={() => searchAllRecipes()}>
                 Search
               </button>
-            </div>
+            </div> */}
             <button className="customIngrBtn" onClick={browseRecipes}>
               Browse All Recipes
             </button>
@@ -856,6 +909,13 @@ function MainPage(props) {
             >
               No ingredient found
             </a>
+            <a
+              // ref={noIgrFoundTxt}
+              id="AddIngredientTo"
+              className="AddIngredientTo"
+            >
+              Add ingredient to:
+            </a>
             <div className="selectField">
               <div className="displaySelection">{displaysearchResults}</div>
 
@@ -876,14 +936,28 @@ function MainPage(props) {
                 onClick={addIngredient}
                 title="Add to recipe"
               >
-                Add
+                Recipe
               </button>
               <button
                 className="addClrBtn"
-                onClick={clearIngrField}
+                
+                onClick={() => {
+                  let amount = parseInt(amountInput.current.value)
+                  displaysearchResults === "" ||
+                  isNaN(amount) || amount === 0 ?
+                  //   ? setaddToDiaryWindow(true)
+                  setalertMessage("Missing info!")
+                  //  : setaddToDiaryWindow(true)
+                  : addIngredientToDiary()
+                  //setaddToDiaryWindow(true)
+                  // setalertMessage(`${displaysearchResults}`);
+                
+                  
+                  
+                }}
                 title="Clear fields"
               >
-                Clear
+                Diary
               </button>
             </div>
             <button className="customIngrBtn" onClick={addCustomIngr}>
@@ -930,26 +1004,26 @@ function MainPage(props) {
             </div>
             <br></br>
 
-            <h4>
+            <p>
               {`Calories: `}
               {recipeCalories}
-            </h4>
-            <h4>
+            </p>
+            <p>
               {`Carbs: `}
               {recipeCarbs}
-            </h4>
-            <h4>
+            </p>
+            <p>
               {`Fiber: `}
               {recipeFiber}
-            </h4>
-            <h4>
+            </p>
+            <p>
               {`Protein: `}
               {recipeProtein}
-            </h4>
-            <h4>
+            </p>
+            <p>
               {`Fat: `}
               {recipeFat}
-            </h4>
+            </p>
 
             <button
               ref={saveRecipeBtn}
